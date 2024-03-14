@@ -1,4 +1,5 @@
 using API.Extensions;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -16,6 +17,7 @@ var app = builder.Build();
 
 //Middleware (Ability to intercept and modify http requests going out of app and coming into app)
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleWare>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
